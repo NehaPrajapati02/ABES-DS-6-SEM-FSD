@@ -15,8 +15,5 @@ if (age > 18) {
 
 const f1 = async() {
   const message = await 
-  console.log(message);
                               
 }
-f1();
-
