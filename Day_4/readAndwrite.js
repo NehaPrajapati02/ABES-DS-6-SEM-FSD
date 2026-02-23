@@ -1,23 +1,11 @@
-const fs = require("fs").promises;
+import fs from "fs/promises";
 
-async function readAndWrite() {
+export const readAndWrite = async (Path) => {
   try {
-    console.log("Reading file...");
-
-    const data = await fs.readFile("students.json", "utf-8");
-    console.log("File data:", data);
-
-    const students = JSON.parse(data);
-
-    await fs.writeFile(
-      "studentsCopy.json",
-      JSON.stringify(students, null, 2)
-    );
-
-    console.log("File copied successfully ✅");
+    const data = await fs.readFile(Path, "utf-8");
+    const jsonData = JSON.parse(data);
+    return jsonData;
   } catch (error) {
-    console.error("Error:", error.message);
+    console.log("unable to read the file", error);
   }
 }
-
-readAndWrite();
